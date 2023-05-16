@@ -2,7 +2,7 @@ const path = require("path");
 const GoogleAssistant = require("google-assistant");
 const config = {
   auth: {
-    keyFilePath: path.resolve(__dirname, "secrets/client_secret_849311578508-umn8a32vntcjnsvvlpttb218sqrj6bj4.apps.googleusercontent.com.json"),
+    keyFilePath: path.resolve(__dirname, "secrets/client_secret.json"),
     // where you want the tokens to be saved
     // will create the directory if not already there
     savedTokensPath: path.resolve(__dirname, "tokens/atompoint-tokens.json")
@@ -126,8 +126,9 @@ module.exports = {
       console.log(`Received command ${text} \n`);
       // set the conversation query to text
       config.conversation.textQuery = text;
-      //   const assistant = new GoogleAssistant(config.auth);
-
+      
+      // @experiement implementation disabled
+      // const assistant = new GoogleAssistant(config.auth);
       // assistant.on('ready', () => assistant.start(config.conversation)).on('started', startConversation);
 
       assistant.start(config.conversation, conversation => {
